@@ -9,7 +9,7 @@ erros de índices inexistentes na lista.
 list_shopping = []
 
 while True:
-    choices = input("Escolha uma das opções: Inserir[1]  Excluir[2]  Lista[3]\n ")  
+    choices = input("Escolha uma das opções: Inserir[1]  Excluir[2]  Lista[3]  Sair[4]\n ")  
     # print(list_shopping)
 
     if choices == '1' or choices == "Inserir":
@@ -45,9 +45,17 @@ while True:
             print("Produto não encontrado!")
 
     elif choices == "3" or choices == "Lista":
+        if list_shopping == []:
+            print("Lista esta vazia.")
+            continue
+        
         for ind, name in enumerate(list_shopping):
             print(ind, name)
     
+    elif choices == "4" or choices == "Sair":
+        print("Saindo do Sistema")
+        break
+
     else:
         print("Essa opção não foi encontrada.")
          
