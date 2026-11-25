@@ -1,4 +1,4 @@
-# Exercício - sistema de perguntas e respostas
+# Exercício - sistema de perguntas i + 1 respostas
 
 
 perguntas = [
@@ -21,25 +21,33 @@ perguntas = [
 
 list_ = ["A","B","C","D"]
 
-print(f"{perguntas[0].get('Pergunta')}\n {list_[0]}){perguntas[0].get('Opções')[0]}\n {list_[1]}){perguntas[0].get('Opções')[1]}\n {list_[2]}){perguntas[0].get('Opções')[2]}\n {list_[3]}){perguntas[0].get('Opções')[3]}")
-result = input("\nQual é a resposta correta?")
+# print(perguntas[0].get('Opções'))
+# for question in perguntas:
+#     print(question['Pergunta'])  
+# raise SystemExit
 
-if result.isnumeric() == False:
-    match result.upper():
-        case "A": result = 0
-        case "B": result = 1
-        case "C": result = 2
-        case "D": result = 3
-else:
-    match int(result):
-        case 1: result = 0
-        case 3: result = 1
-        case 4: result = 2
-        case 5: result = 3
-        case _: result = 0
-              
-         
-if perguntas[0].get('Resposta') == perguntas[0].get('Opções')[result]:
-    print("Resposta Correta!")
-else:
-    print("Resposta Incorreta!")
+for i in range(len(perguntas)):
+    print(f"{perguntas[i].get('Pergunta')}\n {list_[0]}){perguntas[i].get('Opções')[0]}\n {list_[1]}){perguntas[i].get('Opções')[1]}\n {list_[2]}){perguntas[i].get('Opções')[2]}\n {list_[3]}){perguntas[i].get('Opções')[3]}")
+    while True:
+        result = input("\nQual é a resposta correta?")
+
+        if result.isnumeric() == False:
+            match result.upper():
+                case "A": result = 0
+                case "B": result = 1
+                case "C": result = 2
+                case "D": result = 3
+        else:
+            if result not in perguntas[i].get('Opções'):
+                print("Opção invalida!")
+                continue
+
+            for n , x in enumerate(perguntas[i].get('Opções')):
+                if result == x: result = n; break
+        break
+
+    if perguntas[i].get('Resposta') == perguntas[i].get('Opções')[int(result)]:
+        print("Resposta Correta!\n")
+    else:
+        print("Resposta Incorreta!\n")
+        
